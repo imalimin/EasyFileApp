@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#222222"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/list_title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_background" >
+
+        <LinearLayout
+            android:id="@+id/list_title_button_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="3dip" >
+
+            <Button
+                android:id="@+id/backDirectoryOne"
+                android:layout_width="87dip"
+                android:layout_height="35dip"
+                android:background="@drawable/title_button_selector"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/backDirectoryTwo"
+                android:layout_width="87dip"
+                android:layout_height="35dip"
+                android:background="@drawable/title_button_selector"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/backDirectoryThree"
+                android:layout_width="87dip"
+                android:layout_height="35dip"
+                android:background="@drawable/title_button_selector"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/backDirectoryFour"
+                android:layout_width="87dip"
+                android:layout_height="35dip"
+                android:background="@drawable/title_button_selector"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/list_title_select_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="3dip"
+            android:visibility="invisible" >
+
+            <Button
+                android:id="@+id/title_cancel_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dip"
+                android:textSize="13sp"
+                android:text="取消" />
+            
+            <TextView 
+                android:id="@+id/title_selectNum_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/title_cancel_btn"
+                android:layout_marginLeft="5dip"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />"
+            
+            <Button
+                android:id="@+id/title_checkAll_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dip"
+                android:textSize="13sp"
+                android:text="全选" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/list_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/list_title_layout" >
+
+        <ListView
+            android:id="@+id/files_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#000000"
+            android:divider="@drawable/list_divider"
+            android:layoutAnimation="@anim/scale_bigtosmall_anim_for_list"
+            android:listSelector="@drawable/file_list_item_selector"
+            android:longClickable="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/operate_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <RelativeLayout
+            android:id="@+id/operate_one_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#222222"
+            android:visibility="invisible" >
+
+            <Button
+                android:id="@+id/operate_newfile_btnOne"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_alignParentLeft="true"
+                android:text="新建"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/operate_copy_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_toRightOf="@id/operate_newfile_btnOne"
+                android:text="复制"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/operate_shear_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_toRightOf="@id/operate_copy_btn"
+                android:text="剪切"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/operate_delete_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_toRightOf="@id/operate_shear_btn"
+                android:text="删除"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/operate_rename_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_toRightOf="@id/operate_delete_btn"
+                android:text="重命名"
+                android:textSize="13sp" />
+            
+            <Button
+                android:id="@+id/operate_getInfo_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_toRightOf="@id/operate_rename_btn"
+                android:textSize="13sp"
+                android:text="属性" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/operate_two_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#222222"
+            android:visibility="invisible" >
+
+            <Button
+                android:id="@+id/operate_paste_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_alignParentLeft="true"
+                android:text="粘贴"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/operate_newfile_btnTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_toRightOf="@id/operate_paste_btn"
+                android:text="新建"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/operate_cancel_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_toRightOf="@id/operate_newfile_btnTwo"
+                android:text="取消"
+                android:textSize="13sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
