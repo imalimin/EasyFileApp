@@ -385,3 +385,7 @@ public void billCount(final OnBillCountListener onBillCountListener) {
         HttpService.instance().execute(task);
 }
 ```
+
+```
+User user = getApplicationFunc().getDBService().getUserModel().get();
+```
