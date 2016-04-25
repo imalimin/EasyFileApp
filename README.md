@@ -163,7 +163,8 @@ private HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_POST,
                 mLoginListener.onError(result);
             } else {
                 User user = new GsonBuilder().create().fromJson(result, User.class);
-                MyApplication.instance().getDBService().getCookieModel().save(HttpCookie.from(HttpService.instance().getCookies()));
+                MyApplication.instance().getDBService().getCookieModel()
+                .save(HttpCookie.from(HttpService.instance().getCookies()));
                 MyApplication.instance().getDBService().getUserModel().save(user);
                 mLoginListener.onSuccess(user);
             }
@@ -185,17 +186,20 @@ private HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_POST,
 
 ```
 public void queryAllFood(final OnQueryFoodListener onQueryFoodListener) {
-        HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_GET, Api.ALL_FOOD, new StringHttpTask.HttpExecuteLinstener<String>() {
+        HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_GET, Api.ALL_FOOD
+        , new StringHttpTask.HttpExecuteLinstener<String>() {
             @Override
             public void onSuccess(String result) {
                 if (result.contains(Api.ERROR_JSON)) {
-                    onQueryFoodListener.onError(MyApplication.instance().getApplicationContext().getResources().getString(R.string.Service_Error));
+                    onQueryFoodListener.onError(MyApplication.instance().getApplicationContext()
+                    .getResources().getString(R.string.Service_Error));
                 } else {
                     FoodArray fa = new GsonBuilder().create().fromJson(result, FoodArray.class);
                     if (fa != null)
                         onQueryFoodListener.onSuccess(fa.getFoods());
                     else
-                        onQueryFoodListener.onError(MyApplication.instance().getApplicationContext().getResources().getString(R.string.Service_Error));
+                        onQueryFoodListener.onError(MyApplication.instance().getApplicationContext()
+                        .getResources().getString(R.string.Service_Error));
                 }
             }
 
@@ -217,12 +221,14 @@ public void queryAllFood(final OnQueryFoodListener onQueryFoodListener) {
 public void addFood(Food food, final OnCommonListener onCommonListener) {
         File file = new File(food.getImages()[0]);
         if (!file.exists()) return;
-        HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_POST, Api.ADD_FOOD, new StringHttpTask.HttpExecuteLinstener<String>() {
+        HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_POST, Api.ADD_FOOD
+        , new StringHttpTask.HttpExecuteLinstener<String>() {
             @Override
             public void onSuccess(String result) {
                 Log.v(FoodModelImpl.class, "result=" + result);
                 if (result.contains(Api.ERROR_JSON)) {
-                    onCommonListener.onError(MyApplication.instance().getApplicationContext().getResources().getString(R.string.Service_Error));
+                    onCommonListener.onError(MyApplication.instance().getApplicationContext()
+                    .getResources().getString(R.string.Service_Error));
                 } else {
                     onCommonListener.onSuccess("");
                 }
@@ -238,7 +244,8 @@ public void addFood(Food food, final OnCommonListener onCommonListener) {
 
             }
         });
-        task.addParam("foodName", food.getFoodName()).addParam("introduction", food.getIntroduction()).addParam("price", food.getPrice()).addFile("file", file);
+        task.addParam("foodName", food.getFoodName()).addParam("introduction", food.getIntroduction())
+        .addParam("price", food.getPrice()).addFile("file", file);
         HttpService.instance().execute(task);
 }
 ```
@@ -249,18 +256,21 @@ public void queryAllBill(final OnQueryBillListener onQueryBillListener) {
         String url = Api.ALL_BILL;
         if (!user.getUserType().equals(UserType.Administrator))
             url = Api.ALL_BILL_STATE + "?state=" + BillState.CREATED;
-        HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_GET, url, new StringHttpTask.HttpExecuteLinstener<String>() {
+        HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_GET, url
+        , new StringHttpTask.HttpExecuteLinstener<String>() {
             @Override
             public void onSuccess(String result) {
                 Log.v(BillModelImpl.class, "result=" + result);
                 if (result.contains(Api.ERROR_JSON)) {
-                    onQueryBillListener.onError(MyApplication.instance().getApplicationContext().getResources().getString(R.string.Service_Error));
+                    onQueryBillListener.onError(MyApplication.instance().getApplicationContext()
+                    .getResources().getString(R.string.Service_Error));
                 } else {
                     BillArray ba = new GsonBuilder().create().fromJson(result, BillArray.class);
                     if (ba != null)
                         onQueryBillListener.onSuccess(ba.getMyBills());
                     else
-                        onQueryBillListener.onError(MyApplication.instance().getApplicationContext().getResources().getString(R.string.Service_Error));
+                        onQueryBillListener.onError(MyApplication.instance().getApplicationContext()
+                        .getResources().getString(R.string.Service_Error));
                 }
             }
 
@@ -280,12 +290,14 @@ public void queryAllBill(final OnQueryBillListener onQueryBillListener) {
 
 ```
 public void addBill(Bill bill, final OnCommonListener onCommonListener) {
-        HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_POST, Api.ADD_BILL, new StringHttpTask.HttpExecuteLinstener<String>() {
+        HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_POST, Api.ADD_BILL
+        , new StringHttpTask.HttpExecuteLinstener<String>() {
             @Override
             public void onSuccess(String result) {
                 Log.v(BillModelImpl.class, "result=" + result);
                 if (result.contains(Api.ERROR_JSON)) {
-                    onCommonListener.onError(MyApplication.instance().getApplicationContext().getResources().getString(R.string.Service_Error));
+                    onCommonListener.onError(MyApplication.instance().getApplicationContext().getResources()
+                    .getString(R.string.Service_Error));
                 } else {
                     onCommonListener.onSuccess("");
                 }
@@ -315,7 +327,8 @@ public void updateBill(Bill bill, final OnCommonListener onCommonListener) {
             public void onSuccess(String result) {
                 Log.v(BillModelImpl.class, "result=" + result);
                 if (result.contains(Api.ERROR_JSON)) {
-                    onCommonListener.onError(MyApplication.instance().getApplicationContext().getResources().getString(R.string.Service_Error));
+                    onCommonListener.onError(MyApplication.instance().getApplicationContext().getResources()
+                    .getString(R.string.Service_Error));
                 } else {
                     onCommonListener.onSuccess("");
                 }
@@ -331,7 +344,8 @@ public void updateBill(Bill bill, final OnCommonListener onCommonListener) {
 
             }
         });
-        task.addParam("state", String.valueOf(bill.getState())).addParam("billId", String.valueOf(bill.getId()));
+        task.addParam("state", String.valueOf(bill.getState()))
+        .addParam("billId", String.valueOf(bill.getId()));
         HttpService.instance().execute(task);
 }
 ```
@@ -343,14 +357,16 @@ public void billCount(final OnBillCountListener onBillCountListener) {
             public void onSuccess(String result) {
                 Log.v(BillModelImpl.class, "result=" + result);
                 if (result.contains(Api.ERROR_JSON)) {
-                    onBillCountListener.onError(MyApplication.instance().getApplicationContext().getResources().getString(R.string.Service_Error));
+                    onBillCountListener.onError(MyApplication.instance().getApplicationContext()
+                    .getResources().getString(R.string.Service_Error));
                 } else {
                     BillArray ba = new GsonBuilder().create().fromJson(result, BillArray.class);
                     if (ba != null) {
                         double[] r = count(ba.getMyBills());
                         onBillCountListener.onSuccess((int)r[0], r[1]);
                     } else
-                        onBillCountListener.onError(MyApplication.instance().getApplicationContext().getResources().getString(R.string.Service_Error));
+                        onBillCountListener.onError(MyApplication.instance().getApplicationContext()
+                        .getResources().getString(R.string.Service_Error));
                 }
             }
 
