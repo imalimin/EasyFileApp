@@ -1,3 +1,4 @@
+##更新头像
 ```
 public void updateHead(String path, final OnUpdateHeadListener onUpdateHeadListener) {
         File file = new File(path);
@@ -29,6 +30,7 @@ public void updateHead(String path, final OnUpdateHeadListener onUpdateHeadListe
 }
 ```
 
+##更新用户信息
 ```
 public void updateInfo(String introduce, String name, String type, final OnUpdateInfoListener onUpdateInfoListener) {
         HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_POST, Api.UPDATE_USER
