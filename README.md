@@ -322,7 +322,8 @@ public void addBill(Bill bill, final OnCommonListener onCommonListener) {
 
 ```
 public void updateBill(Bill bill, final OnCommonListener onCommonListener) {
-        HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_POST, Api.UPDATE_BILL, new StringHttpTask.HttpExecuteLinstener<String>() {
+        HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_POST, Api.UPDATE_BILL
+        , new StringHttpTask.HttpExecuteLinstener<String>() {
             @Override
             public void onSuccess(String result) {
                 Log.v(BillModelImpl.class, "result=" + result);
@@ -352,7 +353,8 @@ public void updateBill(Bill bill, final OnCommonListener onCommonListener) {
 
 ```
 public void billCount(final OnBillCountListener onBillCountListener) {
-        HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_GET, Api.ALL_BILL, new StringHttpTask.HttpExecuteLinstener<String>() {
+        HttpTask task = StringHttpTask.create(HttpTask.Method.EXECUTE_TYPE_GET, Api.ALL_BILL
+        , new StringHttpTask.HttpExecuteLinstener<String>() {
             @Override
             public void onSuccess(String result) {
                 Log.v(BillModelImpl.class, "result=" + result);
